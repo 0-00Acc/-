@@ -1,0 +1,61 @@
+body {
+    margin: 0;
+    font-family: "Helvetica", "Arial", sans-serif;
+}
+
+.container {
+    display: flex;
+    height: 100vh; /* 讓整頁高度填滿視窗 */
+    overflow: hidden;
+}
+
+.left-panel {
+    width: 35%;
+    padding: 20px;
+    background-color: #21a0c0;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.right-panel {
+    width: 65%;
+    padding: 20px;
+    overflow-y: auto;
+    height: 100vh;
+}
+
+form label {
+    display: block;
+    margin-top: 10px;
+}
+
+form input {
+    width: 100%;
+    padding: 5px;
+    margin-top: 5px;
+    box-sizing: border-box;
+}
+
+form button {
+    margin-top: 15px;
+    padding: 10px 15px;
+    background-color: #1e88e5;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #2e64a1;
+}
+
+.record {
+    background-color: rgb(255, 255, 255);
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
