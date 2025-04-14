@@ -35,6 +35,66 @@
     </div>
 
     <script src="script.js"></script>
+    <script>
+        const recordForm = document.getElementById("recordForm");
+        const recordsContainer = document.getElementById("records");
+
+        let records = [];
+
+        recordForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const date = document.getElementById("date").value;
+            const category = document.getElementById("category").value;
+            const amount = parseFloat(document.getElementById("amount").value);
+            const note = document.getElementById("note").value;
+
+            if (!date || !category || isNaN(amount)) {
+                alert("請完整填寫所有必填欄位！");
+                return;
+            }
+
+            const newRecord = { date, category, amount, note };
+            records.push(newRecord);
+
+            renderRecords();
+            recordForm.reset();
+        });
+
+        function renderRecords() {
+            const monthlyData = {};
+
+            records.forEach(record => {
+                const month = record.date.slice(0, 7); // yyyy-MM
+                if (!monthlyData[month]) {
+                    monthlyData[month] = { total: 0, items: [] };
+                }
+                monthlyData[month].total += record.amount;
+                monthlyData[month].items.push(record);
+            });
+
+            const sortedMonths = Object.keys(monthlyData).sort((a, b) => b.localeCompare(a));
+
+            recordsContainer.innerHTML = "";
+
+            sortedMonths.forEach(month => {
+                const section = document.createElement("div");
+                section.className = "record";
+                section.innerHTML = `<h3>${month} 總支出：$${monthlyData[month].total.toFixed(2)}</h3>`;
+
+                monthlyData[month].items.forEach(record => {
+                    const recordDiv = document.createElement("div");
+                    recordDiv.innerHTML = `
+                        <p>📅 ${record.date}｜📂 ${record.category}｜💰 $${record.amount}｜📝 ${record.note}</p>
+                    `;
+                    section.appendChild(recordDiv);
+                });
+
+                recordsContainer.appendChild(section);
+            });
+        }
+    </script>
+</body>
 </body>
 </html>
 

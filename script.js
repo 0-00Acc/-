@@ -1,4 +1,4 @@
-const apiUrl = "https://script.google.com/macros/s/AKfycbwEU0xHuqhrSg8WUet9irCVjcDsDW0TIr6cjL98BfZO0dTGipFII9Y7OpQXKvJSgZYqCQ/exec";
+const apiUrl = "https://docs.google.com/spreadsheets/d/1hHdqnL76nACxdr_p_3gM5ITWdnQmgXiVMXO4blGTrJ8/edit?pli=1&gid=0#gid=0";
 
 document.getElementById("recordForm").addEventListener("submit", function (e) {
     e.preventDefault();
